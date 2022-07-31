@@ -6,5 +6,5 @@
 - After line 958 add the line:
 
 ```py
-agent_container.exec_run("chmod +x /code/launchers/run_agent.sh")
+agent_container.exec_run(f"chmod +x /code/launchers/{config['agent_run_cmd']}")
 ```
