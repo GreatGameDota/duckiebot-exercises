@@ -52,7 +52,7 @@ class Agent:
 	def on_received_get_commands(self, context: Context, data: GetCommands):
 		pwm_left, pwm_right = self.compute_commands()
 
-		stop_time = 60 * 5
+		stop_time = 60 * 0.5
 		if self.start_time is None:
 			self.start_time = data.at_time
 		elif data.at_time - self.start_time > stop_time:
