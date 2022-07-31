@@ -7,4 +7,4 @@
 - Leave Duckiebot ssh
 - Open file explorer (Home) and enable viewing of hidden files
 - Navigate to `~/.dt-shell/commands-multi/daffy/exercises/test/command.py`
-- Open it, go to line 331, and change it to `agent_base_image = "custom-baseline:latest"` (make sure to leave previous version of other line to run exercises without custom images)
+- Open it, go to line 331, and change it to `agent_base_image = "custom-baseline:latest"` (make sure to leave previous version of this line to run exercises without custom images)
