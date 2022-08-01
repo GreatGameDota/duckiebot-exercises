@@ -1,5 +1,16 @@
 #!/usr/bin/env python3
 
+"""
+
+Create duckietown.yaml in data/
+
+train: .
+val: .
+nc: 4
+names: [ 'duckie', 'cone', 'truck', 'bus' ]
+
+"""
+
 from dataclasses import dataclass
 from typing import Optional, Tuple
 
@@ -32,34 +43,6 @@ class Agent:
 		context.info("init()")
 		self.rgb = None
 		self.start_time = None
-		
-		#os.system("touch data/duckietown.yaml")
-		#with open('data/duckietown.yaml', 'w') as f:
-		#	f.write("train: ./\n")
-		#	f.write("val: ./\n")
-		#	f.write("nc: 4\n")
-		#	f.write("names: [ 'duckie', 'cone', 'truck', 'bus' ]")
-		
-		#device = select_device('0')
-		#model = DetectMultiBackend("runs/train/exp/weights/best.engine", device=device, data="data/duckietown.yaml", dnn=False, fp16=True)
-		#model.warmup(imgsz=(1 if model.pt else 1, 3, 416, 416))
-		
-		# Compute gradient #
-		h = 480
-		w = 640
-		Y, X = np.ogrid[:h, :w]
-		# Experiment with this!
-		center_x = w // 2
-		center_y = h // 2
-		gradient = np.sqrt((X - center_x)**2 + (Y - center_y)**2) + 2*abs(X - center_x) + 3*abs(Y - h)
-
-		# Scale gradient to be between 0-1
-		maxNum = np.max(gradient)
-		minNum = np.min(gradient)
-		for i in range(gradient.shape[0]):
-			for j in range(gradient.shape[1]):
-				gradient[i][j] = self.rescale(gradient[i][j], minNum, maxNum, 1, 0)
-		self.gradient = gradient
 
 	def on_received_seed(self, data: int):
 		np.random.seed(data)
